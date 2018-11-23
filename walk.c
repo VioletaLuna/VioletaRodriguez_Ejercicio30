@@ -39,10 +39,23 @@ int walk(double barrier, int seed){
 
 
 void print(double *x, int n_points){
+  FILE *arch;
+	arch= fopen("walk.dat", "w");
+	if (!arch)
+	{
+		printf("Problemas abriendo el archivos %s\n", ".dat" );
+		exit(1);
+	}
+
   int i;
-  for(i = 0 ; i < n_points ; i++){
+  for(i = 0 ; i < n_points ; i++)
+  {
     fprintf(stdout, "%f\n", x[i]);
   }
+
+	fclose(arch);
+  
+ 
 }
 
 double *reserva(int n_points){
