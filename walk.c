@@ -5,7 +5,7 @@
 int walk(double barrier, int seed);
 double *reserva(int n_points);
 void print(double *x, int n_points);
-void exportarDatos(double* A);
+void exportarDatos(double* A,int n_points);
 
 void main ()
 { 
@@ -13,7 +13,7 @@ void main ()
   int i;
   int n_walkers = 500000;
   
-  A = reserva(n_walkers);
+  A = reserva(n_walkers, n_points);
   #pragma omp parallel
   {
   for (i=0; i<n_walkers; i++){
@@ -63,7 +63,7 @@ double *reserva(int n_points){
   return x;
 }
 
-void exportarDatos(double* A)
+void exportarDatos(double* A, int n_points)
 {
 	
 	FILE *arch;
@@ -75,7 +75,7 @@ void exportarDatos(double* A)
 	}
 
 	int i;
-	for (i = 0; i < N; ++i)
+	for (i = 0; i < n_points; ++i)
 	{
 
 		fprintf(arch, "%lf \n", A[i]);
