@@ -11,10 +11,13 @@ void main ()
   double *A;
   int i;
   int n_walkers = 500000;
-
-  A = reserva(n_walkers);     
+  
+  A = reserva(n_walkers);
+  #pragma omp parallel
+  {
   for (i=0; i<n_walkers; i++){
      A[i] = walk(10.0, i);
+  }
   }
   print(A,n_walkers);
 }
