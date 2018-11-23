@@ -5,6 +5,7 @@
 int walk(double barrier, int seed);
 double *reserva(int n_points);
 void print(double *x, int n_points);
+void exportarDatos(double* A);
 
 void main ()
 { 
@@ -19,7 +20,7 @@ void main ()
      A[i] = walk(10.0, i);
   }
   }
-  print(A,n_walkers);
+  exportarDatos(A,n_walkers);
 }
 
 int walk(double barrier, int seed){
@@ -39,21 +40,12 @@ int walk(double barrier, int seed){
 
 
 void print(double *x, int n_points){
-  FILE *arch;
-	arch= fopen("walk.dat", "w");
-	if (!arch)
-	{
-		printf("Problemas abriendo el archivos %s\n", ".dat" );
-		exit(1);
-	}
 
   int i;
   for(i = 0 ; i < n_points ; i++)
   {
     fprintf(stdout, "%f\n", x[i]);
   }
-
-	fclose(arch);
   
  
 }
@@ -69,4 +61,24 @@ double *reserva(int n_points){
     x[i] = 0.0;
   }
   return x;
+}
+
+void exportarDatos(double* A)
+{
+	
+	FILE *arch;
+	arch= fopen("walk.dat", "w");
+	if (!arch)
+	{
+		printf("Problemas abriendo el archivos %s\n", "walk.dat" );
+		exit(1);
+	}
+
+	for (int i = 0; i < N; ++i)
+	{
+
+		fprintf(arch, "%lf \n", A[i]);
+	}
+
+	fclose(arch);
 }
