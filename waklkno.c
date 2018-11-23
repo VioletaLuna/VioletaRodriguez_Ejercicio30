@@ -60,10 +60,10 @@ void exportarDatos(double* A, int n_points)
 {
 	
 	FILE *arch;
-	arch= fopen("walk.dat", "w");
+	arch= fopen("walkno.dat", "w");
 	if (!arch)
 	{
-		printf("Problemas abriendo el archivos %s\n", "walk.dat" );
+		printf("Problemas abriendo el archivos %s\n", "walkno.dat" );
 		exit(1);
 	}
 
