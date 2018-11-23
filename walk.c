@@ -74,7 +74,8 @@ void exportarDatos(double* A)
 		exit(1);
 	}
 
-	for (int i = 0; i < N; ++i)
+	int i;
+	for (i = 0; i < N; ++i)
 	{
 
 		fprintf(arch, "%lf \n", A[i]);
