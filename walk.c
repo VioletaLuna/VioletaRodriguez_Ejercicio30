@@ -20,7 +20,7 @@ void main ()
      A[i] = walk(10.0, i);
   }
   }
-  exportarDatos(A,n_walkers);
+  exportarDatos(A);
 }
 
 int walk(double barrier, int seed){
